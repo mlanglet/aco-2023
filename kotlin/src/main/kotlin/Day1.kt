@@ -15,7 +15,7 @@ fun main() {
         partTwo += "${findFirstDigit(it)}${findLastDigit(it)}".toInt()
     }
     println("Part one: $partOne")
-    println("Part two: $partTwo")
+    println("Part two: $partTwo") // Not 54538, 54332
 }
 
 fun findFirstDigit(input: String): Int {
@@ -32,6 +32,9 @@ fun findLastDigit(input: String): Int {
     var lastDigit = "0"
     while (matcher.find()) {
         lastDigit = matcher.group()
+        if (lastDigit.length > 1) {
+            matcher.region(matcher.start() + 1, input.length)
+        }
     }
     return getDigitAsInt(lastDigit)
 }
