@@ -15,7 +15,7 @@ fun main() {
         partTwo += "${findFirstDigit(it)}${findLastDigit(it)}".toInt()
     }
     println("Part one: $partOne")
-    println("Part two: $partTwo") // Not 54538, 54332
+    println("Part two: $partTwo")
 }
 
 fun findFirstDigit(input: String): Int {
