@@ -157,4 +157,5 @@ fun buildMappingRange(definition: String): MappingRange {
     val end = start + size - 1
     return MappingRange(start, end, destination)
 }
+
 data class MappingRange(val start: Long, val end: Long, val destination: Long)

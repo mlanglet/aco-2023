@@ -26,7 +26,7 @@ fun main() {
 
     times.forEachIndexed { i, t ->
         var waysToWin = 0
-        val threshold = distances.get(i)
+        val threshold = distances[i]
         (1..t).forEach { pressTime ->
             val distanceTravelled = pressTime * (t - pressTime)
             if (distanceTravelled > threshold) {

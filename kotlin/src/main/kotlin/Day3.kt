@@ -23,7 +23,7 @@ fun main() {
         val symbols = ArrayList<Symbol>()
         while (symbolMatcher.find()) {
             if (symbolMatcher.group().isNotBlank()) {
-                symbols.add(Symbol(symbolMatcher.start(), symbolMatcher.group()))
+                symbols.add(Symbol(symbolMatcher.start(), symbolMatcher.group()[0]))
             }
         }
 
@@ -49,7 +49,7 @@ fun main() {
             }
 
             val adjacentNumbers = ArrayList<PartNumber>()
-            if (symbol.value == "*") {
+            if (symbol.symbol == '*') {
                 for (number in numbers) {
                     if (isAdjacent(number, symbol)) {
                         adjacentNumbers.add(number)
@@ -84,4 +84,4 @@ fun isAdjacent(partNumber: PartNumber, symbol: Symbol): Boolean {
 }
 
 data class PartNumber(val start: Int, val end: Int, val value: Int)
-data class Symbol(val position: Int, val value: String)
+data class Symbol(val position: Int, val symbol: Char)
