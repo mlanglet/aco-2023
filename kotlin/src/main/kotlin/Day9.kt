@@ -1,6 +1,5 @@
 import java.nio.file.Files
 import java.nio.file.Path
-import kotlin.math.abs
 
 
 fun main() {
@@ -22,11 +21,7 @@ fun main() {
 
 private fun extrapolateNextValue(values: List<Long>): Long {
 
-    val diffLists = ArrayList<List<Long>>(listOf(values))
-    while (diffLists.last().any { it != 0L }) {
-        val diffListInput = diffLists.last()
-        diffLists.add((0..<diffListInput.size - 1).map { diffListInput[it + 1] - diffListInput[it] }.toMutableList())
-    }
+    val diffLists = buildDiffLists(values)
 
     diffLists.last().addLast(0)
     (diffLists.size-2 downTo 0).map {
@@ -38,11 +33,7 @@ private fun extrapolateNextValue(values: List<Long>): Long {
 
 private fun extrapolatePreviousValue(values: List<Long>): Long {
 
-    val diffLists = ArrayList<List<Long>>(listOf(values))
-    while (diffLists.last().any { it != 0L }) {
-        val diffListInput = diffLists.last()
-        diffLists.add((0..<diffListInput.size - 1).map { diffListInput[it + 1] - diffListInput[it] }.toMutableList())
-    }
+    val diffLists = buildDiffLists(values)
 
     diffLists.last().addLast(0)
     (diffLists.size-2 downTo 0).map {
@@ -50,5 +41,14 @@ private fun extrapolatePreviousValue(values: List<Long>): Long {
     }
 
     return diffLists.first().first()
+}
+
+private fun buildDiffLists(values: List<Long>): ArrayList<List<Long>> {
+    val diffLists = ArrayList<List<Long>>(listOf(values))
+    while (diffLists.last().any { it != 0L }) {
+        val diffListInput = diffLists.last()
+        diffLists.add((0..<diffListInput.size - 1).map { diffListInput[it + 1] - diffListInput[it] }.toMutableList())
+    }
+    return diffLists
 }
 
