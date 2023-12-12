@@ -30,7 +30,7 @@ fun main() {
     println("Part two: $partTwo")
 }
 
-class HandV2(cards: String, bid: Int, cardValues: List<Char>) : Hand(cards, bid, cardValues) {
+private class HandV2(cards: String, bid: Int, cardValues: List<Char>) : Hand(cards, bid, cardValues) {
     override fun determineType(): HandType {
         val cardCount = HashMap<Char, Int>(5)
         cards.filter {
@@ -87,7 +87,7 @@ class HandV2(cards: String, bid: Int, cardValues: List<Char>) : Hand(cards, bid,
     }
 }
 
-open class Hand(val cards: String, val bid: Int, val cardValues: List<Char>) : Comparable<Hand> {
+private open class Hand(val cards: String, val bid: Int, val cardValues: List<Char>) : Comparable<Hand> {
 
     var rank: Int = 0
     val type: HandType
@@ -152,7 +152,7 @@ open class Hand(val cards: String, val bid: Int, val cardValues: List<Char>) : C
     }
 }
 
-enum class HandType : Comparable<HandType> {
+private enum class HandType : Comparable<HandType> {
     HIGH_CARD,
     PAIR,
     TWO_PAIR,

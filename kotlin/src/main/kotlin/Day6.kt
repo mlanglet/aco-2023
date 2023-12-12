@@ -52,7 +52,7 @@ fun main() {
     println("Part two: $partTwo")
 }
 
-fun parseNumber(it: String): Long {
+private fun parseNumber(it: String): Long {
     return it
         .split(":")[1]
         .trim()

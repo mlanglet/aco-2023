@@ -27,11 +27,11 @@ fun main() {
         map[key] = Pair(pairParts[0], pairParts[1])
     }
 
-    println("Part one: ${partOne(instruction, map)}")
+    println("Part one: ${countDistanceBetweenPairs(instruction, map)}")
     println("Part two: ${partTwo(instruction, map)}")
 }
 
-private fun partOne(
+private fun countDistanceBetweenPairs(
     instruction: String,
     map: HashMap<String, Pair<String, String>>,
 ): Int {
@@ -71,7 +71,7 @@ private fun partTwo(
     return findLCM(results.values.toList())
 }
 
-fun findLCM(numbers: List<Long>): Long {
+private fun findLCM(numbers: List<Long>): Long {
     var result = numbers[0]
     for (i in 1 until numbers.size) {
         result = findLCM(result, numbers[i])
@@ -79,7 +79,7 @@ fun findLCM(numbers: List<Long>): Long {
     return result
 }
 
-fun findLCM(a: Long, b: Long): Long {
+private fun findLCM(a: Long, b: Long): Long {
     val larger = if (a > b) a else b
     val maxLcm = a * b
     var lcm = larger

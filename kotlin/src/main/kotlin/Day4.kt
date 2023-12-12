@@ -27,13 +27,13 @@ fun main() {
     println("Part two: ${totalCards.size}")
 }
 
-fun collectWinnings(cards: Map<Int, ScratchCard>, totalCards: ArrayList<ScratchCard>){
+private fun collectWinnings(cards: Map<Int, ScratchCard>, totalCards: ArrayList<ScratchCard>){
     cards.forEach { card ->
         collectWinnings(card.key, cards, totalCards)
     }
 }
 
-fun collectWinnings(cardId: Int, cards: Map<Int, ScratchCard>, totalCards: ArrayList<ScratchCard>){
+private fun collectWinnings(cardId: Int, cards: Map<Int, ScratchCard>, totalCards: ArrayList<ScratchCard>){
     (1..cards[cardId]!!.numberOfWinningNumbers).forEach {
         val copyId = it + cardId
         if (copyId in cards){
@@ -43,4 +43,4 @@ fun collectWinnings(cardId: Int, cards: Map<Int, ScratchCard>, totalCards: Array
     }
 }
 
-data class ScratchCard(val id: Int, val numberOfWinningNumbers: Int)
+private data class ScratchCard(val id: Int, val numberOfWinningNumbers: Int)

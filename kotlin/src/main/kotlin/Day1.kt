@@ -18,7 +18,7 @@ fun main() {
     println("Part two: $partTwo")
 }
 
-fun findFirstDigit(input: String): Int {
+private fun findFirstDigit(input: String): Int {
     val matcher = digitPattern.matcher(input)
     var firstDigit = "0"
     if (matcher.find()) {
@@ -27,7 +27,7 @@ fun findFirstDigit(input: String): Int {
     return getDigitAsInt(firstDigit)
 }
 
-fun findLastDigit(input: String): Int {
+private fun findLastDigit(input: String): Int {
     val matcher = digitPattern.matcher(input)
     var lastDigit = "0"
     while (matcher.find()) {
@@ -39,7 +39,7 @@ fun findLastDigit(input: String): Int {
     return getDigitAsInt(lastDigit)
 }
 
-fun getDigitAsInt(digit: String): Int {
+private fun getDigitAsInt(digit: String): Int {
     return if (digitsAsStrings.contains(digit)) {
         digitsAsStrings.indexOf(digit)
     } else {

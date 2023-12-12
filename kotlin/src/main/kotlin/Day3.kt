@@ -79,9 +79,9 @@ fun main() {
     println("Part two: $partTwo")
 }
 
-fun isAdjacent(partNumber: PartNumber, symbol: Symbol): Boolean {
+private fun isAdjacent(partNumber: PartNumber, symbol: Symbol): Boolean {
     return !(partNumber.start - 1 > symbol.position || partNumber.end < symbol.position)
 }
 
-data class PartNumber(val start: Int, val end: Int, val value: Int)
-data class Symbol(val position: Int, val symbol: Char)
+private data class PartNumber(val start: Int, val end: Int, val value: Int)
+private data class Symbol(val position: Int, val symbol: Char)

@@ -49,13 +49,13 @@ suspend fun main() {
     println("Part two: $partTwo")
 }
 
-fun mapSeedRangeToLocation(seedRange: LongRange, mappings: HashMap<String, ArrayList<RangeMapping>>): Long {
+private fun mapSeedRangeToLocation(seedRange: LongRange, mappings: HashMap<String, ArrayList<RangeMapping>>): Long {
     return seedRange.minOf {
         mapSeedToLocation(it, mappings)
     }
 }
 
-fun mapSeedToLocation(
+private fun mapSeedToLocation(
     seed: Long,
     mappings: HashMap<String, ArrayList<RangeMapping>>
 ): Long {
@@ -83,7 +83,7 @@ fun mapSeedToLocation(
     )
 }
 
-fun parseSeeds(it: String): List<Long> {
+private fun parseSeeds(it: String): List<Long> {
     return it
         .split(":")[1]
         .split(Pattern.compile("\\s+"))
@@ -92,7 +92,7 @@ fun parseSeeds(it: String): List<Long> {
         .toList()
 }
 
-fun parseSeedRanges(it: String): List<LongRange> {
+private fun parseSeedRanges(it: String): List<LongRange> {
     val seeds = ArrayList<LongRange>()
     val parts = it.split(":")[1]
     val matcher = digit.matcher(parts)
@@ -105,7 +105,7 @@ fun parseSeedRanges(it: String): List<LongRange> {
     return seeds
 }
 
-fun matchRange(value: Long, ranges: List<RangeMapping>): Long {
+private fun matchRange(value: Long, ranges: List<RangeMapping>): Long {
     var match: Long? = null
     ranges.forEach {
         if (it.source.first <= value && it.source.last >= value) {
@@ -115,7 +115,7 @@ fun matchRange(value: Long, ranges: List<RangeMapping>): Long {
     return match ?: value
 }
 
-fun buildRangeMapping(definition: String): RangeMapping {
+private fun buildRangeMapping(definition: String): RangeMapping {
     val parts = definition.split(" ")
     val destinationStart = parts[0].toLong()
     val sourceStart = parts[1].toLong()
@@ -125,4 +125,4 @@ fun buildRangeMapping(definition: String): RangeMapping {
     return RangeMapping(LongRange(sourceStart, sourceEnd), LongRange(destinationStart, destinationEnd))
 }
 
-data class RangeMapping(val source: LongRange, val destination: LongRange)
+private data class RangeMapping(val source: LongRange, val destination: LongRange)

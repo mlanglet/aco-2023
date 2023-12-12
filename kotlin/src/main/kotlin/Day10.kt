@@ -25,7 +25,7 @@ private fun buildPipe(
     return pipe
 }
 
-fun nextConnector(
+private fun nextConnector(
     currentPosition: Point,
     pipe: HashSet<Point>,
     maze: Array<CharArray>,
@@ -91,7 +91,7 @@ fun nextConnector(
     }
 }
 
-fun firstConnector(
+private fun firstConnector(
     currentPosition: Point,
     maze: Array<CharArray>,
 ): Point {
@@ -123,13 +123,13 @@ fun firstConnector(
 }
 
 
-fun candidateNotInPipe(candidates: List<Point>, pipe: HashSet<Point>): Point? {
+private fun candidateNotInPipe(candidates: List<Point>, pipe: HashSet<Point>): Point? {
     return candidates.find { candidate ->
         !pipe.contains(candidate)
     }
 }
 
-fun findStartingPosition(maze: Array<CharArray>): Point {
+private fun findStartingPosition(maze: Array<CharArray>): Point {
     var startingPosition = Point(0, 0)
     maze.mapIndexed { row, a ->
         a.mapIndexed { column, c ->
@@ -141,3 +141,4 @@ fun findStartingPosition(maze: Array<CharArray>): Point {
     return startingPosition
 }
 
+private data class Point(val x: Int, val y: Int)
